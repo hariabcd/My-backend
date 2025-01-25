@@ -1,0 +1,8 @@
+spring.application.name=localshare
+
+
+aws:
+  s3:
+    status-bucket: "your_status_bucket"
+    post_bucket: "your_post_bucket"
+    user_profile_bucket: "your_user_profile_bucket"
