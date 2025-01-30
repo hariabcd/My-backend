@@ -10,24 +10,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.awt.*;
+
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @Service
 @RequiredArgsConstructor
 public class PostService {
 
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
     private final UserService userService;
     private final ImageService imageService;
     private final S3Service s3;
-    @Value("${aws.s3.bucket}")
-    private String bucket;
+//    @Value("${aws.s3.bucket}")
+    private String bucket = "asdfg";
 
     public List<Post> getAllPosts() {
         return postRepository.findAll();

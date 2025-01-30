@@ -24,6 +24,6 @@ public class PostView {
     private Long viewId;
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "post_id", referencedColumnName = "postId", nullable = false)
-    private Long postId;
+    private Post postId;
     private Long userId;
 }

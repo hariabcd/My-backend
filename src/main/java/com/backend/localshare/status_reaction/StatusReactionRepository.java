@@ -14,7 +14,7 @@ public interface StatusReactionRepository extends JpaRepository<StatusReaction, 
 
 
     // Check if a user has already liked stars the status
-    @Query("SELECT COUNT(r) > 0 THEN TRUE ELSE FALSE END" +
+    @Query("SELECT COUNT(r) > 0 " +
             "FROM StatusReaction r " +
             "WHERE r.status.statusId = :statusId AND r.userId = :userId " +
             "AND r.reactionType = 'STATUS_STAR' ")
@@ -23,14 +23,14 @@ public interface StatusReactionRepository extends JpaRepository<StatusReaction, 
     );
 
     // Delete a like stars reaction
-    @Modifying
-    @Transactional
-    @Query("DELETE FROM StatusReaction r WHERE r.status.statusId = :statusId AND r.viewer = :viewer AND r.reactionType = 'LIKE'")
-    void deleteStarsByStatusAndViewer(@Param("statusId") Long statusId,
-                                      @Param("viewer") Long viewer);
+//    @Modifying
+//    @Transactional
+//    @Query("DELETE FROM StatusReaction r WHERE r.status.statusId = :statusId AND r.viewer = :viewer AND r.reactionType = 'LIKE'")
+//    void deleteStarsByStatusAndViewer(@Param("statusId") Long statusId,
+//                                      @Param("viewer") Long viewer);
 
     // Check if a user has already viewed the status
-    @Query("SELECT COUNT(r) > 0 THEN TRUE ELSE FALSE END FROM StatusReaction r " +
+    @Query("SELECT COUNT(r) > 0 FROM StatusReaction r " +
             "WHERE r.status.statusId = :statusId AND " +
             "r.userId = :userId AND r.reactionType = 'STATUS_VIEW'")
     boolean existsByStatusIdAndUserId(

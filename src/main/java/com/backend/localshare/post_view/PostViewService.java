@@ -25,19 +25,19 @@ public class PostViewService {
 
     public void incrementViewCount(Long postId, Long userId) {
         // Check if the user has already viewed the post
-        if (postViewRepository.findByUserIdAndPostId(userId, postId).isEmpty()) {
-            // Record the user's view
-            PostView postView = new PostView();
-            postView.setUserId(userId);
-            postView.setPostId(postId);
-            postViewRepository.save(postView);
-
-            // Increment the post's view count
-            Post post = postRepository.findById(postId)
-                    .orElseThrow(() -> new RuntimeException("Post not found with id: " + postId));
-            post.setViewsCount(post.getViewsCount() + 1);
-            postRepository.save(post);
-        }
+//        if (postViewRepository.findByUserIdAndPostId(userId, postId).isEmpty()) {
+//            // Record the user's view
+//            PostView postView = new PostView();
+//            postView.setUserId(userId);
+////            postView.setPostId(postId);
+//            postViewRepository.save(postView);
+//
+//            // Increment the post's view count
+//            Post post = postRepository.findById(postId)
+//                    .orElseThrow(() -> new RuntimeException("Post not found with id: " + postId));
+//            post.setViewsCount(post.getViewsCount() + 1);
+//            postRepository.save(post);
+//        }
     }
 
 }

@@ -7,21 +7,21 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @GetMapping("/createUsers")
     public User createUser() {
-
+        return null;
     }
 
     @PutMapping("/updateUser")
     public User upDateUser() {
-
+        return null;
     }
 
     @GetMapping
     public User getUser(){
-
+        return null;
     }
 
     @DeleteMapping
     public User deleteUser() {
-
+        return null;
     }
 }

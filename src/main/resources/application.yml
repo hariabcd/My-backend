@@ -1,5 +1,25 @@
-spring.application.name=localshare
+#spring.application.name=localshare
 
+server:
+  port: 8080  # Define the server port
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/local-share-db
+    username: postgres
+    password: harikrishnapostgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    root: info  # Set logging level for the entire application
+    com.example: debug  # Adjust logging for specific packages
 
 aws:
   s3:

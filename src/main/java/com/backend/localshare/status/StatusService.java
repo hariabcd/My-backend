@@ -30,8 +30,8 @@ public class StatusService {
     private final ImageService imageService;
     private final S3Service s3;
 
-    @Value("${aws.s3.status_bucket}")
-    private String bucket;
+//    @Value("${aws.s3.status_bucket}")
+    private String bucket = "asdfg";
 
     public List<Status> getAllPosts() {
         return statusRepository.findAll();
@@ -107,7 +107,7 @@ public class StatusService {
                 codeBuilder.append("1234567890abcdefghijklmnopqrstuvwxyz_".charAt(randomIndex));
             }
             key = codeBuilder + extension;
-        } while (statusRepository.existsByImageKey(key));
+        } while (statusRepository.existsByObjectKey(key));
         return key;
     }
 
@@ -126,7 +126,7 @@ public class StatusService {
 
         Pageable pageable = PageRequest.of(page, 30);
         Page<StatusDTO> seenStatus = statusRepository.getSeenStatus(
-                location, userId, pageable, LocalDateTime.now()
+                location, userId, LocalDateTime.now(), pageable
         );
         return buildPageResponse(seenStatus);
     }
